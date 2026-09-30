@@ -24,10 +24,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Configure Pages (crée le site Pages en mode workflow s'il n'existe pas)
+      - name: Configure Pages
         uses: actions/configure-pages@v5
-        with:
-          enablement: true
 
       - name: Upload app/ as Pages artifact
         uses: actions/upload-pages-artifact@v3
