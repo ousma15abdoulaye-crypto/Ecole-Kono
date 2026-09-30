@@ -14,13 +14,55 @@
   },
   {
    "type": "say",
-   "text": "Salut {prenom} ! Moi, c'est Kono, l'oiseau du fleuve. Aujourd'hui, je te montre une astuce des bons calculateurs : passer par la dizaine.",
+   "text": "Salut {prenom} ! Moi, c'est Kono, l'oiseau du fleuve. Aujourd'hui : d'abord le calcul express, puis une astuce de calcul, puis une lecture.",
+   "say": "Salut {prenom} ! Moi, c'est Kono, l'oiseau du fleuve. Aujourd'hui : d'abord le calcul express, puis une astuce de calcul, puis une lecture.",
    "show": [
     {
      "kind": "title",
      "text": "Passer par la dizaine"
     }
    ]
+  },
+  {
+   "type": "part",
+   "n": 1,
+   "title": "Calcul express",
+   "text": "Premier temps : le calcul express."
+  },
+  {
+   "type": "drill",
+   "id": "calcul-express-bleu",
+   "title": "Calcul express",
+   "seconds": 150,
+   "count": 10,
+   "input": "keypad",
+   "text": "Dix calculs. Le chronomètre compte, mais tu joues seulement contre toi-même.",
+   "kinds": [
+    {
+     "kind": "complement10",
+     "w": 1
+    },
+    {
+     "kind": "complement-next-ten",
+     "w": 2
+    },
+    {
+     "kind": "through10",
+     "w": 1
+    },
+    {
+     "kind": "double",
+     "min": 5,
+     "max": 15,
+     "w": 1
+    }
+   ]
+  },
+  {
+   "type": "part",
+   "n": 2,
+   "title": "La leçon",
+   "text": "Deuxième temps : l'astuce du jour."
   },
   {
    "type": "review",
@@ -433,11 +475,37 @@
    "text": "Prends ta fiche bleue « Passer par la dizaine ». Fais une étoile, puis deux étoiles, puis trois étoiles si tu peux. Quand tu as fini, tape tes réponses ici."
   },
   {
+   "type": "part",
+   "n": 3,
+   "title": "Lecture",
+   "text": "Troisième temps : la lecture."
+  },
+  {
+   "type": "reading",
+   "id": "lecture-depart",
+   "title": "Le départ de Kono",
+   "passage": [
+    "Ce matin, Kono se réveille sur le toit du port de Bamako.",
+    "Le fleuve brille sous le soleil.",
+    "Des pinasses chargées de sacs de riz attendent les voyageurs.",
+    "Kono regarde la carte : le Niger va jusqu'à Gao, très loin.",
+    "« Je veux voir toutes les villes du fleuve ! » dit-il.",
+    "Il salue ses amis les pêcheurs, ouvre ses ailes et se pose à l'avant d'une grande pinasse.",
+    "Le voyage commence."
+   ]
+  },
+  {
+   "type": "part",
+   "n": 4,
+   "title": "Ta méthode",
+   "text": "Dernier temps : explique ta méthode."
+  },
+  {
    "type": "record",
    "kind": "methode",
    "clip": "explique",
-   "text": "Dernière chose : explique avec ta voix comment tu as calculé 38 + 7. Appuie sur le rond rouge pour parler, puis encore une fois pour t'arrêter.",
-   "say": "Dernière chose : explique avec ta voix comment tu as calculé trente-huit plus sept. Appuie sur le rond rouge pour parler, puis encore une fois pour t'arrêter."
+   "text": "Explique avec ta voix comment tu as calculé 38 + 7. Appuie sur le rond rouge pour parler, puis encore une fois pour t'arrêter.",
+   "say": "Explique avec ta voix comment tu as calculé trente-huit plus sept. Appuie sur le rond rouge pour parler, puis encore une fois pour t'arrêter."
   },
   {
    "type": "end",
@@ -565,5 +633,6 @@
    "Erreur typique à surveiller : écrire 213 pour 29 + 4 (le 13 posé à côté du 2). La tablette l'explique ; redemandez à l'enfant de montrer le saut jusqu'à 30.",
    "Le défi i) n'a pas une seule bonne réponse : par exemple 36 + 4 + 4, ou 36 + 10 − 2. Faites expliquer."
   ]
- }
+ },
+ "escale": 1
 }

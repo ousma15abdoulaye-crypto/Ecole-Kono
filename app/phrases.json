@@ -1,0 +1,82 @@
+{
+ "_note": "Toutes les phrases que le moteur dit lui-même. Source unique : l'application les affiche et les dit ; tools/build_audio.py les fait enregistrer ou générer. Pas de nombre variable dans ces phrases : les chiffres s'affichent, ils ne se disent pas.",
+ "good": [
+  "Trouvé ! Tu peux dire à Maman comment tu as fait ?",
+  "Oui ! Bonne méthode.",
+  "Juste. Tu as bien cherché.",
+  "C'est ça !"
+ ],
+ "gold": "Poisson doré ! Tu t'es trompé{e}, tu as cherché encore, et tu as trouvé.",
+ "notYet": "Pas encore.",
+ "otherWay": "Essaie une autre façon.",
+ "lookAgain": "Regarde encore une fois.",
+ "revealStart": "Voici la réponse.",
+ "revealEnd": "On la reverra une autre fois.",
+ "reviewIntro": "On revoit un défi d'avant.",
+ "paperAllGood": "Tout est juste. Montre ta fiche à Maman.",
+ "paperFix": "Regarde les croix. Corrige sur ta fiche, puis tape la nouvelle réponse.",
+ "paperFinal": "Voici les bonnes réponses. Regarde-les avec Maman.",
+ "paperEmpty": "Touche une ligne, puis tape au moins une réponse de ta fiche.",
+ "paperLook": "Regarde encore ton calcul sur ta fiche.",
+ "drillGo": "Prêt ? Appuie sur C'est parti, et réponds le plus vite que tu peux, sans te presser pour autant.",
+ "drillRecord": "Nouveau record ! Tu as battu ton record.",
+ "drillNoRecord": "Bon travail. Demain, on essaie de battre ton record.",
+ "drillFirst": "Voilà ton premier record. Demain, on essaie de le battre.",
+ "drillMisses": "On revoit tes erreurs, sans chronomètre.",
+ "readListen": "Écoute d'abord. Suis les mots avec ton doigt.",
+ "readYourTurn": "À toi de lire à voix haute. Appuie sur le rond rouge, lis tout le texte, puis appuie encore une fois.",
+ "storyListen": "Écoute bien l'histoire. Il n'y a pas d'images pour l'instant : fabrique les images dans ta tête.",
+ "storyScenes": "Voici les images de l'histoire. Regarde si elles ressemblent aux images de ta tête.",
+ "recAsk": "Appuie sur le rond rouge pour parler, puis encore une fois pour t'arrêter.",
+ "endDone": "Séance terminée. Regarde tous les poissons que tu as pêchés !",
+ "endGold": "Les poissons dorés, ce sont les réponses trouvées après une erreur.",
+ "mapMove": "La pinasse avance sur le fleuve.",
+ "micOff": "Le micro n'est pas disponible. Explique à Maman à voix haute.",
+ "clips": [
+  {
+   "id": "bonjour_bleu",
+   "who": "bleu",
+   "maman": "Bonjour [prénom], c'est Maman. Travaille bien avec Kono, je suis juste à côté.",
+   "kono": ""
+  },
+  {
+   "id": "bonjour_orange",
+   "who": "orange",
+   "maman": "Bonjour [prénom], c'est Maman. Travaille bien avec Kono, je suis juste à côté.",
+   "kono": ""
+  },
+  {
+   "id": "bravo_effort",
+   "maman": "Tu t'es trompé(e), et tu as continué. Je suis fière de toi.",
+   "kono": ""
+  },
+  {
+   "id": "fiche",
+   "maman": "Va chercher ta fiche et ton crayon. Je viendrai voir ton travail.",
+   "kono": "Va chercher ta fiche et ton crayon."
+  },
+  {
+   "id": "explique",
+   "maman": "Explique bien, je t'écouterai ce soir.",
+   "kono": "Maman écoutera ton explication ce soir."
+  },
+  {
+   "id": "fin_bleu",
+   "who": "bleu",
+   "maman": "C'est fini pour aujourd'hui. Viens me montrer ta fiche !",
+   "kono": "C'est fini pour aujourd'hui. Va montrer ta fiche à Maman !"
+  },
+  {
+   "id": "fin_orange",
+   "who": "orange",
+   "maman": "C'est fini pour aujourd'hui. Viens me montrer ta fiche !",
+   "kono": "C'est fini pour aujourd'hui. Va montrer ta fiche à Maman !"
+  },
+  {
+   "id": "bravo_escale",
+   "maman": "Une escale de plus sur le fleuve ! Je suis fière de ton travail.",
+   "kono": ""
+  }
+ ],
+ "voiceTest": "Bonjour ! Moi, c'est Kono, l'oiseau du fleuve. Trente-huit plus sept, ça fait quarante-cinq. On apprend ensemble ?"
+}

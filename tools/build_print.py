@@ -101,6 +101,26 @@ def kid_page(L, n):
 {body}
 <div class="foot"><span>L'école de Kono · {esc(L["week"])} · même contenu que la tablette</span><span>{n}</span></div></section>'''
 
+def reading_pages(L, n0):
+    out = []
+    for st in L["steps"]:
+        if st.get("type") != "reading": continue
+        total, rows = 0, ""
+        for sent in st["passage"]:
+            total += len([w for w in sent.split() if any(ch.isalnum() for ch in w)])
+            rows += f'<tr><td style="font-size:17pt;line-height:1.7;padding:1.5mm 3mm">{esc(sent)}</td><td style="width:14mm;text-align:right;color:#8a8a85;font-family:Nunito;font-weight:800">{total}</td></tr>'
+        mes = "".join(f'<tr><td>{k}</td><td></td><td></td><td></td><td></td></tr>' for k in range(1, 5))
+        color = BLEU if L["child"] == "bleu" else ORANGE
+        out.append(f'''<section class="page"><div class="band" style="background:{color}"><span><b>TEXTE À RELIRE</b> &nbsp;<span class="what">{esc(L["week"])} · Lecture</span></span><span class="pr">Prénom :</span></div>
+<h1 style="color:{color}">{esc(st["title"])}</h1>
+<p style="font-size:11pt;color:#55554f;margin:0 0 3mm">À relire chaque jour, à voix haute, pour lire de plus en plus facilement. Le nombre à droite compte les mots depuis le début.</p>
+<table style="width:100%;border-collapse:collapse">{rows}</table>
+<div class="lv" style="margin-top:8mm"><div class="lvh" style="font-family:Nunito">Pour l'adulte : la mesure d'une minute</div>
+<p style="font-size:10.5pt;margin:0 0 2mm">Chronométrer une minute. Compter les mots lus correctement (le nombre de la ligne atteinte, moins les erreurs). Objectif de fin de CE1 : 70 mots par minute. Comparer l'enfant à lui-même, jamais aux autres.</p>
+<table class="a" style="font-size:10.5pt"><tr><td><b>Mesure</b></td><td><b>Date</b></td><td><b>Mots lus</b></td><td><b>Erreurs</b></td><td><b>Mots par minute</b></td></tr>{mes}</table></div>
+<div class="foot"><span>L'école de Kono · {esc(L["week"])} · même texte que la tablette</span><span>{n0 + len(out)}</span></div></section>''')
+    return out
+
 def maman_page(lessons, n):
     blocks = ""
     for L in lessons:
@@ -124,7 +144,9 @@ async def main():
     idx = json.loads((APP / "lessons" / "index.json").read_text())
     lessons = [json.loads((APP / "lessons" / f'{l["id"]}.json').read_text()) for l in idx["lessons"] if l["week"] == WEEK]
     lessons.sort(key=lambda L: (L["child"] != "bleu", L["order"]))
-    pages = [kid_page(L, i + 1) for i, L in enumerate(lessons)] + [maman_page([L], len(lessons) + 1 + i) for i, L in enumerate(lessons)]
+    pages = [kid_page(L, i + 1) for i, L in enumerate(lessons)]
+    for L in lessons: pages += reading_pages(L, len(pages) + 1)
+    pages += [maman_page([L], len(pages) + 1 + i) for i, L in enumerate(lessons)]
     doc = f'<!doctype html><html lang="fr"><head><meta charset="utf-8"><style>{CSS}</style></head><body>{"".join(pages)}</body></html>'
     out_html = ROOT / "print" / f"Fiches_{WEEK}.html"; out_html.write_text(doc, encoding="utf-8")
     from playwright.async_api import async_playwright

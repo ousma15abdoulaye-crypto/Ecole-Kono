@@ -1,7 +1,48 @@
 {
-  "version": "S0-2026-10-01",
-  "lessons": [
-    { "id": "bleu-s0-dizaine", "child": "bleu", "order": 0, "title": "Passer par la dizaine", "week": "S0" },
-    { "id": "orange-s0-amis10", "child": "orange", "order": 0, "title": "Les amis de 10", "week": "S0" }
-  ]
+ "version": "S0-v0.2",
+ "lessons": [
+  {
+   "id": "bleu-s0-dizaine",
+   "child": "bleu",
+   "order": 0,
+   "title": "Passer par la dizaine",
+   "week": "S0",
+   "escale": 1
+  },
+  {
+   "id": "orange-s0-amis10",
+   "child": "orange",
+   "order": 0,
+   "title": "Les amis de 10",
+   "week": "S0",
+   "escale": 1
+  }
+ ],
+ "escales": [
+  {
+   "n": 1,
+   "name": "Bamako",
+   "sessions": 28
+  },
+  {
+   "n": 2,
+   "name": "Ségou",
+   "sessions": 28
+  },
+  {
+   "n": 3,
+   "name": "Djenné et Mopti",
+   "sessions": 28
+  },
+  {
+   "n": 4,
+   "name": "Tombouctou",
+   "sessions": 28
+  },
+  {
+   "n": 5,
+   "name": "Gao",
+   "sessions": 28
+  }
+ ]
 }

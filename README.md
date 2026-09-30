@@ -1,8 +1,17 @@
 # L'école de Kono
 
-Leçons guidées par une voix, pour les parcours Bleu (7 ans, CE1) et Orange (5 ans ½, grande section).
-Kono, un oiseau du fleuve, explique, montre un exemple pas à pas, fait pratiquer, puis envoie l'enfant sur sa fiche papier et vérifie ses réponses.
-Maman enregistre elle-même quelques phrases que Kono fait entendre au bon moment.
+Séances guidées par une voix, pour les parcours Bleu (7 ans, CE1) et Orange (5 ans ½, grande section).
+Kono, un oiseau du fleuve, emmène l'enfant en voyage sur le Niger, de Bamako à Gao : chaque séance fait avancer la pinasse sur la carte.
+
+Chaque séance a quatre temps, toujours dans le même ordre :
+
+1. **Automatismes** : calcul express chronométré contre soi-même. Les types de calcul où l'enfant se trompe reviennent plus souvent ; les calculs ratés reviennent au début de la séance suivante.
+2. **Leçon explicite** : Kono montre, on fait ensemble, l'enfant fait sa fiche papier et tape ses réponses. Chaque erreur typique reçoit son explication.
+3. **Lecture** (Bleu) : le texte est lu d'abord par une voix, phrase surlignée ; puis l'enfant lit et s'enregistre. Le parent mesure les mots lus par minute.
+   **Histoire** (Orange), à la manière de Narramus : écoute sans images, mots nouveaux mimés, questions sur les personnages, puis l'enfant raconte avec les images et s'enregistre.
+4. **Méthode** : l'enfant explique comment il a fait.
+
+Maman enregistre elle-même quelques phrases que Kono fait entendre au bon moment. Aucune voix n'imite une personne réelle.
 
 **Principe d'architecture : une seule source, deux supports.** Chaque leçon est un fichier `app/lessons/*.json`.
 L'application tablette le lit ; `tools/build_print.py` en tire les fiches à imprimer et la carte Maman.
@@ -14,7 +23,11 @@ Le papier et la tablette ne peuvent donc pas se contredire.
 |---|---|
 | `app/` | L'application à mettre en ligne (site statique, fonctionne hors ligne une fois installée) |
 | `app/lessons/index.json` | Liste des leçons publiées |
-| `app/lessons/<id>.json` | Une leçon : voix, étapes, exercices, erreurs typiques, fiche papier |
+| `app/lessons/<id>.json` | Une séance : voix, étapes, exercices, erreurs typiques, fiche papier |
+| `app/phrases.json` | Les phrases que le moteur dit lui-même, et les phrases de Maman |
+| `app/audio/` | Les voix enregistrées (`rec/`) ou générées (`gen/`), et leur manifeste |
+| `tools/build_audio.py` | Liste les phrases à enregistrer, importe les enregistrements, génère la voix de Kono, écrit le manifeste |
+| `voix/` | Dépôt des enregistrements humains (`conteur/`, `kono/`) et registre des numéros de phrases |
 | `tools/build_print.py` | Génère `print/Fiches_<semaine>.pdf` depuis les leçons |
 | `print/` | Fiches et cartes Maman prêtes à imprimer |
 
@@ -64,14 +77,29 @@ Les défis ratés reviennent automatiquement au début des séances suivantes (f
 | `number` / `choice` | Question avec clavier ou choix. `errors` = explication propre à chaque mauvaise réponse typique ; `hints` = indices ; `sol` = solution expliquée ; `after` = dessin affiché une fois trouvé. |
 | `paper` | Envoie l'enfant sur sa fiche, puis vérifie les réponses tapées. Les exercices viennent de la section `paper` du même fichier. |
 | `record` | L'enfant s'enregistre pour expliquer sa méthode. Le parent écoute le soir. |
+| `part` | Annonce un des quatre temps (`n`, `title`, `text`). L'en-tête de la séance montre le temps en cours. |
+| `drill` | Automatismes : `count` questions en `seconds` secondes, `kinds` pondérés (`complement10`, `complement-next-ten`, `through10`, `double`, `table`, `tf-complement`, `count-tf`, `decomp`), `input` = `keypad` ou `choice`. Record gardé par enfant. |
+| `reading` | Lecture répétée : `passage` = liste de phrases. Écoute surlignée, puis enregistrement de l'enfant. |
+| `story` | Histoire : `sentences`, `vocab` (mot + explication à mimer), `questions` (étapes `choice`), `scenes` (images), `retell` (consigne pour raconter). |
 | `end` | Bilan de la séance et phrase de fin de Maman. |
 
 Dessins disponibles dans `show` : `title`, `expr`, `text`, `numberline` (from, to, marks, jumps), `split` (whole, parts), `tenframe` (filled, highlightEmpty), `fingers` (up).
 Jetons de texte : `{prenom}` (prénom de l'enfant), `{e}` (accord au féminin).
 
-## Limites connues (version 0.1)
+## 5. Les voix
 
-- La qualité de la voix dépend de la tablette : c'est le moteur de synthèse d'Android qui parle.
+`python3 tools/build_audio.py` écrit `print/voix_a_enregistrer.md` : chaque phrase avec son numéro, son rôle (conteur ou Kono) et son statut.
+
+- **Voix humaines** : enregistrer une phrase par fichier, nommé par son numéro (`012.m4a`), dans `voix/conteur/` ou `voix/kono/`, puis relancer le script. Il égalise le volume, coupe les silences et convertit en mp3.
+- **Voix de synthèse haut de gamme pour Kono** : définir `GOOGLE_TTS_API_KEY` (et, si on veut, `KONO_VOICE`, par défaut `fr-FR-Neural2-A`), puis relancer le script. Seules les phrases sans audio sont générées. Cette partie n'a pas pu être testée sans clé.
+- Un enregistrement humain passe toujours avant une voix générée ; sans l'un ni l'autre, c'est la voix de la tablette.
+- Les numéros de phrases ne changent jamais (`voix/registre.json`) : on peut enregistrer en plusieurs fois.
+- Les phrases qui contiennent le prénom de l'enfant restent dites par la tablette.
+
+## Limites connues (version 0.2)
+
+- Tant qu'aucune voix n'est enregistrée ou générée, c'est la synthèse d'Android qui parle ; sa qualité dépend de la tablette.
+- Les images des histoires sont des dessins simples, en attendant un illustrateur.
 - Pas de reconnaissance vocale : la lecture à voix haute est enregistrée, un adulte l'écoute.
 - Le suivi est propre à chaque tablette. Si la tablette est réinitialisée, le suivi et les enregistrements sont perdus.
 - Tester localement : `python3 -m http.server 8765 --directory app`, puis `http://localhost:8765/#test` (le mode `#test` accélère la voix pour les tests).
