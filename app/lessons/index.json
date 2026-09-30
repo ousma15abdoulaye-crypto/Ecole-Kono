@@ -1,0 +1,7 @@
+{
+  "version": "S0-2026-10-01",
+  "lessons": [
+    { "id": "bleu-s0-dizaine", "child": "bleu", "order": 0, "title": "Passer par la dizaine", "week": "S0" },
+    { "id": "orange-s0-amis10", "child": "orange", "order": 0, "title": "Les amis de 10", "week": "S0" }
+  ]
+}

@@ -1,0 +1,107 @@
+{
+  "id": "orange-s0-amis10",
+  "child": "orange",
+  "order": 0,
+  "week": "S0",
+  "title": "Les amis de 10",
+  "domain": "Nombres",
+  "programme": "Grande section · décomposer les nombres jusqu'à 10",
+  "objective": "Trouver ce qui manque pour faire 10, avec la boîte à dix et avec les doigts.",
+  "steps": [
+    { "type": "maman", "clip": "bonjour_orange" },
+    { "type": "say",
+      "text": "Coucou {prenom} ! Moi, c'est Kono, l'oiseau du fleuve. Aujourd'hui, on joue avec les amis de dix.",
+      "show": [{ "kind": "title", "text": "Les amis de 10" }] },
+    { "type": "review", "fallback": [
+      { "type": "choice", "id": "rappel-6",
+        "text": "Pour commencer : combien de points dans la boîte ?",
+        "show": [{ "kind": "tenframe", "filled": 6 }],
+        "options": [5, 6, 7], "answer": 6,
+        "errors": { "5": "Recompte en touchant chaque point avec ton doigt.", "7": "Recompte doucement, un point à la fois." },
+        "hints": ["Touche chaque point avec ton doigt en comptant."],
+        "sol": "Il y a 6 points." }
+    ]},
+    { "type": "demo", "title": "Je te montre", "lines": [
+      { "text": "Voici la boîte à dix. Elle a dix cases.", "say": "Voici la boîte à dix. Elle a dix cases.",
+        "show": [{ "kind": "tenframe", "filled": 0 }] },
+      { "text": "Je mets 7 points.", "say": "Je mets sept points.",
+        "show": [{ "kind": "tenframe", "filled": 7 }] },
+      { "text": "Combien de cases sont vides ? Comptons : 1, 2, 3.", "say": "Combien de cases sont vides ? Comptons : un, deux, trois.",
+        "show": [{ "kind": "tenframe", "filled": 7, "highlightEmpty": true }] },
+      { "text": "7 points et 3 cases vides : 7 et 3 font 10 !", "say": "Sept points, et trois cases vides. Sept et trois font dix !",
+        "show": [{ "kind": "tenframe", "filled": 7, "highlightEmpty": true }, { "kind": "expr", "text": "7 + 3 = 10" }] },
+      { "text": "7 et 3 sont des amis de 10.", "say": "Sept et trois sont des amis de dix.",
+        "show": [{ "kind": "expr", "text": "7 et 3 : amis de 10" }] }
+    ]},
+    { "type": "say",
+      "text": "À toi. Écoute bien : je te demande les cases vides, les cases blanches.",
+      "show": [{ "kind": "tenframe", "filled": 8 }] },
+    { "type": "choice", "id": "guide-8",
+      "text": "Combien de cases sont vides ?",
+      "show": [{ "kind": "tenframe", "filled": 8 }],
+      "options": [2, 8, 3], "answer": 2,
+      "errors": { "8": "Tu as compté les points. Moi, je veux les cases blanches, les cases vides.", "3": "Recompte les cases blanches en les touchant." },
+      "hints": ["Touche chaque case blanche avec ton doigt."],
+      "sol": "8 et 2 font 10." },
+    { "type": "choice", "id": "seul-5",
+      "text": "Et là, combien de cases sont vides ?",
+      "show": [{ "kind": "tenframe", "filled": 5 }],
+      "options": [4, 5, 6], "answer": 5,
+      "errors": { "4": "Recompte les cases blanches, une par une.", "6": "Recompte les cases blanches, une par une." },
+      "hints": ["Une ligne est pleine, l'autre est vide. Combien de cases dans une ligne ?"],
+      "sol": "5 et 5 font 10." },
+    { "type": "choice", "id": "seul-9",
+      "text": "Et là ?",
+      "show": [{ "kind": "tenframe", "filled": 9 }],
+      "options": [1, 9, 2], "answer": 1,
+      "errors": { "9": "Tu as compté les points. Combien de cases blanches ?", "2": "Recompte les cases blanches en les touchant." },
+      "hints": ["Cherche les cases blanches. Il n'y en a pas beaucoup."],
+      "sol": "9 et 1 font 10." },
+    { "type": "say",
+      "text": "Maintenant avec tes mains. Montre sept doigts, comme sur l'image.",
+      "show": [{ "kind": "fingers", "up": 7 }] },
+    { "type": "choice", "id": "doigts-7",
+      "text": "Combien de doigts sont baissés ?",
+      "show": [{ "kind": "fingers", "up": 7 }],
+      "options": [3, 7, 2], "answer": 3,
+      "errors": { "7": "Sept, ce sont les doigts levés. Combien sont baissés ?", "2": "Recompte les doigts baissés, un par un." },
+      "hints": ["Regarde les doigts gris, ceux qui sont baissés."],
+      "sol": "7 doigts levés et 3 baissés : 7 et 3 font 10. Tes mains sont une boîte à dix !" },
+    { "type": "maman", "clip": "fiche" },
+    { "type": "paper",
+      "text": "Prends ta fiche orange « Les amis de 10 ». Compte les cases vides et écris le nombre. Quand tu as fini, tape tes réponses ici." },
+    { "type": "record", "kind": "methode", "clip": "explique",
+      "text": "Dernière chose : dis avec ta voix qui est l'ami de 7, et comment tu le sais. Appuie sur le rond rouge pour parler, puis encore une fois pour t'arrêter.",
+      "say": "Dernière chose : dis avec ta voix qui est l'ami de sept, et comment tu le sais. Appuie sur le rond rouge pour parler, puis encore une fois pour t'arrêter." },
+    { "type": "end", "clip": "fin_orange" }
+  ],
+  "paper": {
+    "title": "Les amis de 10",
+    "model": "7 points et 3 cases vides : 7 et 3 font 10.",
+    "levels": [
+      { "stars": 1, "ins": "Combien de cases vides ? Écris le nombre.", "who": "seul",
+        "items": [
+          { "id": "a", "q": "boîte avec 6 points", "tenframe": 6, "answer": 4, "errors": { "6": "Tu as compté les points. Compte les cases blanches." } },
+          { "id": "b", "q": "boîte avec 4 points", "tenframe": 4, "answer": 6, "errors": { "4": "Tu as compté les points. Compte les cases blanches." } },
+          { "id": "c", "q": "boîte avec 2 points", "tenframe": 2, "answer": 8, "errors": { "2": "Tu as compté les points. Compte les cases blanches." } }
+        ] },
+      { "stars": 2, "ins": "Les amis de 10. Complète.", "who": "seul",
+        "items": [
+          { "id": "d", "q": "9 + ? = 10", "answer": 1 },
+          { "id": "e", "q": "5 + ? = 10", "answer": 5 },
+          { "id": "f", "q": "3 + ? = 10", "answer": 7 }
+        ] },
+      { "stars": 3, "ins": "Maman lit. Tu cherches.", "who": "maman",
+        "items": [
+          { "id": "g", "q": "J'ai 10 mangues. J'en donne 4 à mon frère. Combien m'en reste-t-il ?", "short": "10 mangues, j'en donne 4", "answer": 6,
+            "errors": { "14": "Tu as ajouté. Mais quand on donne, il en reste moins." } },
+          { "id": "h", "q": "Colorie les 10 cases avec deux couleurs. Écris tes deux nombres : ... et ... font 10.", "tenframe": 0, "lines": 1 }
+        ] }
+    ],
+    "maman": [
+      "La tablette montre la boîte à dix, fait faire trois exemples, puis passe aux doigts : les mains sont une boîte à dix.",
+      "Erreur typique à surveiller : compter les points au lieu des cases vides. La tablette l'explique ; faites toucher chaque case blanche.",
+      "Pour le défi h), toutes les paires justes sont bonnes : 1 et 9, 2 et 8, 3 et 7, 4 et 6, 5 et 5."
+    ]
+  }
+}

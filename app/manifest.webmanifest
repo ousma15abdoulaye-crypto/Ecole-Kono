@@ -1,0 +1,16 @@
+{
+  "name": "L'école de Kono",
+  "short_name": "Kono",
+  "description": "Leçons guidées par la voix pour les parcours Bleu et Orange.",
+  "lang": "fr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "any",
+  "background_color": "#eef2ef",
+  "theme_color": "#3d7fa3",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}

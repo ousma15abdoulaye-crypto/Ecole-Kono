@@ -1,0 +1,569 @@
+{
+ "id": "bleu-s0-dizaine",
+ "child": "bleu",
+ "order": 0,
+ "week": "S0",
+ "title": "Passer par la dizaine",
+ "domain": "Nombres",
+ "programme": "CE1 · calcul en ligne : stratégies pour ajouter un nombre à un chiffre",
+ "objective": "Calculer 38 + 7 en passant par 40 : 38 + 2 = 40, puis 40 + 5 = 45.",
+ "steps": [
+  {
+   "type": "maman",
+   "clip": "bonjour_bleu"
+  },
+  {
+   "type": "say",
+   "text": "Salut {prenom} ! Moi, c'est Kono, l'oiseau du fleuve. Aujourd'hui, je te montre une astuce des bons calculateurs : passer par la dizaine.",
+   "show": [
+    {
+     "kind": "title",
+     "text": "Passer par la dizaine"
+    }
+   ]
+  },
+  {
+   "type": "review",
+   "fallback": [
+    {
+     "type": "number",
+     "id": "rappel-8",
+     "text": "Échauffement. Combien faut-il ajouter à 8 pour faire 10 ?",
+     "say": "Échauffement. Combien faut-il ajouter à huit pour faire dix ?",
+     "show": [
+      {
+       "kind": "expr",
+       "text": "8 + ? = 10"
+      }
+     ],
+     "answer": 2,
+     "errors": {
+      "18": "Tu as ajouté 8 et 10. Moi, je te demande ce qui manque à 8 pour arriver à 10.",
+      "10": "10, c'est le résultat. Combien faut-il ajouter à 8 pour y arriver ?"
+     },
+     "hints": [
+      "Compte à partir de 8 : 9, 10. Combien de pas as-tu fait ?"
+     ],
+     "sol": "8 + 2 = 10."
+    },
+    {
+     "type": "number",
+     "id": "rappel-36",
+     "text": "Et à 36, combien faut-il ajouter pour arriver à 40 ?",
+     "say": "Et à trente-six, combien faut-il ajouter pour arriver à quarante ?",
+     "show": [
+      {
+       "kind": "expr",
+       "text": "36 + ? = 40"
+      }
+     ],
+     "answer": 4,
+     "errors": {
+      "76": "Tu as additionné 36 et 40. Je te demande seulement ce qui manque pour aller de 36 à 40.",
+      "14": "Regarde les unités : 6 et combien font 10 ?"
+     },
+     "hints": [
+      "Pense seulement au 6 : combien faut-il pour faire 10 ?"
+     ],
+     "sol": "36 + 4 = 40, parce que 6 + 4 = 10."
+    }
+   ]
+  },
+  {
+   "type": "demo",
+   "title": "Je te montre",
+   "lines": [
+    {
+     "text": "Regarde ce calcul : 38 + 7.",
+     "say": "Regarde ce calcul : trente-huit plus sept.",
+     "show": [
+      {
+       "kind": "expr",
+       "text": "38 + 7"
+      }
+     ]
+    },
+    {
+     "text": "38, c'est tout près de 40. Il lui manque 2.",
+     "say": "Trente-huit, c'est tout près de quarante. Il lui manque deux.",
+     "show": [
+      {
+       "kind": "expr",
+       "text": "38 + 7"
+      },
+      {
+       "kind": "numberline",
+       "from": 30,
+       "to": 50,
+       "marks": [
+        38,
+        40
+       ]
+      }
+     ]
+    },
+    {
+     "text": "Alors je coupe le 7 en deux morceaux : 2 et 5.",
+     "say": "Alors je coupe le sept en deux morceaux : deux, et cinq.",
+     "show": [
+      {
+       "kind": "split",
+       "whole": 7,
+       "parts": [
+        2,
+        5
+       ]
+      },
+      {
+       "kind": "numberline",
+       "from": 30,
+       "to": 50,
+       "marks": [
+        38,
+        40
+       ]
+      }
+     ]
+    },
+    {
+     "text": "38 + 2 = 40. Un nombre tout rond !",
+     "say": "Trente-huit plus deux, quarante. Un nombre tout rond !",
+     "show": [
+      {
+       "kind": "split",
+       "whole": 7,
+       "parts": [
+        2,
+        5
+       ]
+      },
+      {
+       "kind": "numberline",
+       "from": 30,
+       "to": 50,
+       "marks": [
+        38,
+        40
+       ],
+       "jumps": [
+        [
+         38,
+         40,
+         "+2"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "text": "Il me reste 5. 40 + 5 = 45.",
+     "say": "Il me reste cinq. Quarante plus cinq, quarante-cinq.",
+     "show": [
+      {
+       "kind": "split",
+       "whole": 7,
+       "parts": [
+        2,
+        5
+       ]
+      },
+      {
+       "kind": "numberline",
+       "from": 30,
+       "to": 50,
+       "marks": [
+        38,
+        40,
+        45
+       ],
+       "jumps": [
+        [
+         38,
+         40,
+         "+2"
+        ],
+        [
+         40,
+         45,
+         "+5"
+        ]
+       ]
+      }
+     ]
+    },
+    {
+     "text": "Donc 38 + 7 = 45. On a fait un arrêt à 40.",
+     "say": "Donc trente-huit plus sept égale quarante-cinq. Tu vois ? On a fait un arrêt à quarante.",
+     "show": [
+      {
+       "kind": "expr",
+       "text": "38 + 7 = 45"
+      },
+      {
+       "kind": "numberline",
+       "from": 30,
+       "to": 50,
+       "marks": [
+        38,
+        40,
+        45
+       ],
+       "jumps": [
+        [
+         38,
+         40,
+         "+2"
+        ],
+        [
+         40,
+         45,
+         "+5"
+        ]
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "type": "say",
+   "text": "À nous deux maintenant : 47 + 6. Tu fais chaque étape, je t'aide.",
+   "say": "À nous deux maintenant : quarante-sept plus six. Tu fais chaque étape, je t'aide.",
+   "show": [
+    {
+     "kind": "expr",
+     "text": "47 + 6"
+    },
+    {
+     "kind": "numberline",
+     "from": 40,
+     "to": 60,
+     "marks": [
+      47
+     ]
+    }
+   ]
+  },
+  {
+   "type": "number",
+   "id": "guide-47-a",
+   "text": "Combien manque-t-il à 47 pour arriver à 50 ?",
+   "say": "Combien manque-t-il à quarante-sept pour arriver à cinquante ?",
+   "show": [
+    {
+     "kind": "expr",
+     "text": "47 + ? = 50"
+    },
+    {
+     "kind": "numberline",
+     "from": 40,
+     "to": 60,
+     "marks": [
+      47,
+      50
+     ]
+    }
+   ],
+   "answer": 3,
+   "errors": {
+    "53": "Tu as déjà fait tout le calcul ! Mais ici, je te demande seulement ce qui manque à 47 pour arriver à 50.",
+    "6": "6, c'est le nombre qu'on ajoute. Pour aller de 47 à 50, il en faut moins."
+   },
+   "hints": [
+    "Compte à partir de 47 : 48, 49, 50. Combien de pas ?"
+   ],
+   "sol": "47 + 3 = 50."
+  },
+  {
+   "type": "number",
+   "id": "guide-47-b",
+   "text": "Je coupe le 6 : 3 pour aller à 50. Il reste combien ?",
+   "say": "Je coupe le six : trois pour aller à cinquante. Il reste combien ?",
+   "show": [
+    {
+     "kind": "split",
+     "whole": 6,
+     "parts": [
+      3,
+      null
+     ]
+    }
+   ],
+   "answer": 3,
+   "errors": {
+    "9": "Tu as ajouté 6 et 3. Mais on coupe le 6 en deux morceaux : 3 et combien font 6 ?"
+   },
+   "hints": [
+    "3 et combien font 6 ?"
+   ],
+   "sol": "6, c'est 3 et 3."
+  },
+  {
+   "type": "number",
+   "id": "guide-47-c",
+   "text": "Alors 50 + 3 = ?",
+   "say": "Alors, cinquante plus trois ?",
+   "show": [
+    {
+     "kind": "split",
+     "whole": 6,
+     "parts": [
+      3,
+      3
+     ]
+    },
+    {
+     "kind": "numberline",
+     "from": 40,
+     "to": 60,
+     "marks": [
+      47,
+      50
+     ],
+     "jumps": [
+      [
+       47,
+       50,
+       "+3"
+      ]
+     ]
+    }
+   ],
+   "answer": 53,
+   "errors": {
+    "503": "On n'écrit pas 50 et 3 l'un à côté de l'autre. 50 + 3, c'est 5 dizaines et 3 unités."
+   },
+   "hints": [
+    "5 dizaines et 3 unités, ça s'écrit comment ?"
+   ],
+   "sol": "50 + 3 = 53. Donc 47 + 6 = 53.",
+   "after": [
+    {
+     "kind": "expr",
+     "text": "47 + 6 = 53"
+    },
+    {
+     "kind": "numberline",
+     "from": 40,
+     "to": 60,
+     "marks": [
+      47,
+      50,
+      53
+     ],
+     "jumps": [
+      [
+       47,
+       50,
+       "+3"
+      ],
+      [
+       50,
+       53,
+       "+3"
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "type": "say",
+   "text": "À toi tout{e} seul{e}. Imagine la ligne des nombres dans ta tête.",
+   "show": [
+    {
+     "kind": "title",
+     "text": "À toi !"
+    }
+   ]
+  },
+  {
+   "type": "number",
+   "id": "seul-29-4",
+   "text": "29 + 4 = ?",
+   "say": "Vingt-neuf plus quatre ?",
+   "show": [
+    {
+     "kind": "expr",
+     "text": "29 + 4"
+    }
+   ],
+   "answer": 33,
+   "errors": {
+    "213": "Tu as écrit 13 à côté du 2. Mais 13, c'est une dizaine et 3 unités : cette dizaine rejoint les 2 autres. Passe par 30.",
+    "23": "Tu as oublié une dizaine : 9 + 4 = 13, ça fait passer à la dizaine suivante. Passe par 30.",
+    "32": "Presque ! Refais le chemin : 29 + 1 = 30, puis il reste 3.",
+    "34": "Presque ! Le 4, c'est 1 pour aller à 30, et il reste 3."
+   },
+   "hints": [
+    "Combien manque-t-il à 29 pour arriver à 30 ?",
+    "29 + 1 = 30. Il reste 3 à ajouter."
+   ],
+   "sol": "29 + 1 = 30, puis 30 + 3 = 33."
+  },
+  {
+   "type": "number",
+   "id": "seul-56-8",
+   "text": "56 + 8 = ?",
+   "say": "Cinquante-six plus huit ?",
+   "show": [
+    {
+     "kind": "expr",
+     "text": "56 + 8"
+    }
+   ],
+   "answer": 64,
+   "errors": {
+    "514": "Tu as écrit 14 à côté du 5. Mais 14, c'est une dizaine et 4 unités : 5 dizaines et 1 dizaine, ça fait 6 dizaines.",
+    "54": "Tu as oublié une dizaine : 6 + 8 = 14, ça fait passer à 60.",
+    "63": "Presque ! 56 + 4 = 60, et il reste 4, pas 3.",
+    "65": "Presque ! 56 + 4 = 60, et il reste 4."
+   },
+   "hints": [
+    "Combien manque-t-il à 56 pour arriver à 60 ?",
+    "56 + 4 = 60. Il reste 4 à ajouter."
+   ],
+   "sol": "56 + 4 = 60, puis 60 + 4 = 64."
+  },
+  {
+   "type": "maman",
+   "clip": "fiche"
+  },
+  {
+   "type": "paper",
+   "text": "Prends ta fiche bleue « Passer par la dizaine ». Fais une étoile, puis deux étoiles, puis trois étoiles si tu peux. Quand tu as fini, tape tes réponses ici."
+  },
+  {
+   "type": "record",
+   "kind": "methode",
+   "clip": "explique",
+   "text": "Dernière chose : explique avec ta voix comment tu as calculé 38 + 7. Appuie sur le rond rouge pour parler, puis encore une fois pour t'arrêter.",
+   "say": "Dernière chose : explique avec ta voix comment tu as calculé trente-huit plus sept. Appuie sur le rond rouge pour parler, puis encore une fois pour t'arrêter."
+  },
+  {
+   "type": "end",
+   "clip": "fin_bleu"
+  }
+ ],
+ "paper": {
+  "title": "Passer par la dizaine",
+  "model": "Mon astuce : 38 + 7 = 38 + 2 + 5 = 40 + 5 = 45",
+  "levels": [
+   {
+    "stars": 1,
+    "ins": "Calcule en passant par la dizaine. Dessine les sauts sur la ligne.",
+    "who": "seul",
+    "items": [
+     {
+      "id": "a",
+      "q": "18 + 5",
+      "answer": 23,
+      "line": [
+       10,
+       30
+      ],
+      "errors": {
+       "113": "Tu as écrit 13 à côté du 1. La dizaine de 8 + 5 rejoint l'autre dizaine.",
+       "13": "Tu as oublié la dizaine du 18."
+      }
+     },
+     {
+      "id": "b",
+      "q": "27 + 6",
+      "answer": 33,
+      "line": [
+       20,
+       40
+      ],
+      "errors": {
+       "213": "Tu as écrit 13 à côté du 2. La dizaine de 7 + 6 rejoint les autres.",
+       "23": "Tu as oublié une dizaine : 7 + 6 = 13."
+      }
+     },
+     {
+      "id": "c",
+      "q": "45 + 7",
+      "answer": 52,
+      "line": [
+       40,
+       60
+      ],
+      "errors": {
+       "412": "Tu as écrit 12 à côté du 4. 5 + 7 = 12 : une dizaine de plus.",
+       "42": "Tu as oublié une dizaine : 5 + 7 = 12."
+      }
+     }
+    ]
+   },
+   {
+    "stars": 2,
+    "ins": "Calcule dans ta tête. Écris seulement le résultat.",
+    "who": "seul",
+    "items": [
+     {
+      "id": "d",
+      "q": "38 + 9",
+      "answer": 47,
+      "errors": {
+       "317": "Tu as écrit 17 à côté du 3 : la dizaine de 8 + 9 rejoint les autres.",
+       "37": "Tu as oublié une dizaine : 8 + 9 = 17."
+      }
+     },
+     {
+      "id": "e",
+      "q": "66 + 8",
+      "answer": 74,
+      "errors": {
+       "614": "Tu as écrit 14 à côté du 6 : la dizaine rejoint les autres.",
+       "64": "Tu as oublié une dizaine : 6 + 8 = 14."
+      }
+     },
+     {
+      "id": "f",
+      "q": "79 + 5",
+      "answer": 84,
+      "errors": {
+       "714": "Tu as écrit 14 à côté du 7 : la dizaine rejoint les autres.",
+       "74": "Tu as oublié une dizaine : 9 + 5 = 14."
+      }
+     }
+    ]
+   },
+   {
+    "stars": 3,
+    "ins": "Défis. Tu peux dessiner pour chercher.",
+    "who": "seul",
+    "items": [
+     {
+      "id": "g",
+      "q": "Awa a 58 F. Sa grand-mère lui donne 25 F. Combien d'argent a-t-elle maintenant ?",
+      "short": "Awa : 58 F + 25 F",
+      "answer": 83,
+      "lines": 1,
+      "errors": {
+       "713": "Tu as écrit 13 à côté du 7 : 8 + 5 = 13 fait une dizaine de plus.",
+       "73": "Tu as oublié la dizaine de 8 + 5 = 13."
+      }
+     },
+     {
+      "id": "h",
+      "q": "47 + ? = 52",
+      "answer": 5,
+      "errors": {
+       "99": "Tu as additionné 47 et 52. Je te demande ce qui manque pour aller de 47 à 52."
+      }
+     },
+     {
+      "id": "i",
+      "q": "Trouve deux façons différentes de calculer 36 + 8. Écris-les.",
+      "lines": 2
+     }
+    ]
+   }
+  ],
+  "maman": [
+   "La tablette montre l'astuce, fait faire un exemple pas à pas, puis demande de taper les réponses de la fiche.",
+   "Erreur typique à surveiller : écrire 213 pour 29 + 4 (le 13 posé à côté du 2). La tablette l'explique ; redemandez à l'enfant de montrer le saut jusqu'à 30.",
+   "Le défi i) n'a pas une seule bonne réponse : par exemple 36 + 4 + 4, ou 36 + 10 − 2. Faites expliquer."
+  ]
+ }
+}
